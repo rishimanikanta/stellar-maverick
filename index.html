@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Maverick | The Silent Pioneers</title>
+    <title>Stellar Maverick | Immersive Space Terminal</title>
     <style>
         :root {
-            --bg-space: #030712;
-            --panel-bg: rgba(17, 24, 39, 0.95);
+            --bg-space: #020617;
+            --panel-bg: rgba(15, 23, 42, 0.95);
             --accent-blue: #38bdf8;
             --accent-pink: #f43f5e;
             --accent-green: #10b981;
-            --text-main: #f3f4f6;
-            --text-muted: #94a3b8;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
@@ -21,44 +21,51 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            background-image: radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
-            background-size: 150px 150px;
+            background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
         header {
             background: linear-gradient(180deg, #0f172a 0%, var(--bg-space) 100%);
             text-align: center;
-            padding: 30px 15px;
-            border-bottom: 2px dashed var(--accent-blue);
+            padding: 25px 15px;
+            border-bottom: 2px solid var(--accent-blue);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         }
         h1 {
-            margin: 10px 0 0 0;
-            font-size: 1.8rem;
+            margin: 0;
+            font-size: 1.6rem;
             color: var(--accent-blue);
-            text-shadow: 0 0 15px var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            margin: 5px 0 0 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
         }
         .main-frame {
             padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            gap: 15px;
         }
         .panel {
             background-color: var(--panel-bg);
-            border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.6);
-            border-top: 3px solid var(--accent-blue);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-top: 4px solid var(--accent-pink);
         }
         h2 {
+            font-size: 1rem;
+            margin: 0 0 10px 0;
             color: var(--accent-pink);
-            font-size: 1.15rem;
-            margin-top: 0;
             text-transform: uppercase;
-            border-bottom: 1px solid #1e293b;
-            padding-bottom: 8px;
+            letter-spacing: 1px;
         }
         .node-container {
             display: grid;
@@ -68,98 +75,141 @@
         }
         .control-btn {
             background: #0f172a;
-            border: 1px solid #334155;
-            color: var(--text-muted);
+            border: 1px solid #475569;
+            color: var(--text-main);
             padding: 12px 5px;
             cursor: pointer;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-family: inherit;
             text-transform: uppercase;
+            transition: all 0.2s ease;
         }
         .control-btn.active {
-            border-color: var(--accent-blue);
-            color: #fff;
-            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
         }
         #simulation-screen {
-            background: #020617;
-            border: 1px solid #1e293b;
-            min-height: 80px;
-            border-radius: 8px;
+            background: #000000;
+            border: 1px solid #334155;
+            min-height: 60px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 15px;
-            font-size: 0.85rem;
+            padding: 10px;
+            font-size: 0.75rem;
             color: var(--accent-green);
-            border-left: 4px solid var(--accent-green);
+            text-shadow: 0 0 5px var(--accent-green);
+            margin-bottom: 15px;
         }
         .story-box {
-            background: rgba(30, 41, 59, 0.4);
+            background: rgba(30, 41, 59, 0.5);
             padding: 15px;
             border-radius: 8px;
-            margin-top: 15px;
-            border: 1px solid #1e293b;
+            border: 1px solid #334155;
+            min-height: 150px;
+        }
+        #display-title {
+            color: var(--accent-blue);
+            margin: 0 0 8px 0;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px var(--accent-blue);
+        }
+        #display-desc {
+            font-size: 0.8rem;
             line-height: 1.6;
+            margin: 0;
+            color: #e2e8f0;
         }
         .footer {
             text-align: center;
-            padding: 30px 15px;
+            padding: 20px;
             color: var(--text-muted);
-            font-size: 0.7rem;
-            border-top: 1px solid #1e293b;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>THE SILENT PIONEERS</h1>
-        <p style="color: var(--text-muted); margin: 8px 0 0 0; font-size: 0.75rem;">An Interactive Storytelling Journey of Humanity's Discarded Equipment</p>
+        <p class="subtitle">Interactive Multiverse Terminal Matrix v3.0</p>
     </header>
     <div class="main-frame">
         <div class="panel">
-            <h2>🛸 Select a Pioneer to Hear Their Story</h2>
+            <h2>🛸 Select Interstellar Hardware Node</h2>
             <div class="node-container">
                 <button class="control-btn" id="btn-ds1" onclick="loadAsset('ds1')">Deep Space 1</button>
                 <button class="control-btn" id="btn-oppy" onclick="loadAsset('oppy')">Opportunity</button>
                 <button class="control-btn" id="btn-apollo" onclick="loadAsset('apollo')">Apollo 11</button>
             </div>
-            <div id="simulation-screen">> AWAITING INCOMING TELEMETRY LOGS... CHOOSE A NODE ABOVE to UNLOCK THE STORY.</div>
-            
+            <div id="simulation-screen">> INITIALIZED... CHOOSE A DEPLOYMENT CLUSTER TO BOOT RADAR LOGS.</div>
             <div class="story-box">
-                <h3 id="display-title" style="color: var(--accent-blue); margin-top: 0; font-size: 1.1rem; text-transform: uppercase;">Introduction: Beyond Space Junk</h3>
-                <p id="display-desc" style="color: var(--text-main); font-size: 0.85rem; margin: 0;">Humanity builds monuments out of stone to remember our history on Earth. But across the cosmos, our first interplanetary monuments are made of titanium, solar panels, and gold foil. These machines are not space garbage. They are our silent pioneers—the lone vanguards of human curiosity left resting on the shores of alien worlds.</p>
+                <h3 id="display-title">System Outpost: Active</h3>
+                <p id="display-desc">Humanity builds monuments out of stone on Earth. But across space, our historical milestones are made of titanium and solar cells. These decommissioned machines are our silent pioneers left resting on the shores of alien worlds. Select a node above to load their deep space data chroniclers.</p>
             </div>
         </div>
     </div>
-    <div class="footer">NASA SPACE APPS CHALLENGE // STORY BY TEAM STELLAR MAVERICK</div>
+    <div class="footer">STELLAR MAVERICK // NASA SPACE APPS SUBMISSION 2026</div>
     <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(freq, type, duration) {
+            try {
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
         const assets = {
             ds1: {
                 title: "Chapter 1: The Nomad of the Sun (Deep Space 1)",
-                desc: "In 1998, a lone voyager set out into the dark to test a futuristic blue ion drive. It danced past asteroids and braved the freezing tail of Comet Borrelly. In 2001, its fuel depleted, engineers sent a final command to switch off its engines. Today, it drifts as a ghost ship in a permanent, massive orbit around our Sun—a silent nomad sailing forever around the star that gave it life.",
-                sim: "📡 TELEMETRY STATUS: Cruising permanently in Heliocentric Orbit around the Sun."
+                desc: "Launched in 1998, DS1 successfully validated revolutionary solar electric ion propulsion tech and advanced autonomous software in deep space before its system shut down permanently in late 2001. It now floats silently as a permanent interstellar monument, drifting in a giant orbit around our solar system's star.",
+                sim: "📡 CONNECTED // HELIOCENTRIC ORBIT RADAR LOCKED"
             },
             oppy: {
                 title: "Chapter 2: The Heartbeat in the Dust (Opportunity Rover)",
-                desc: "It was built to survive for only 90 days on Mars. Instead, it pushed through severe sandstorms and brutal winters for nearly 15 years, finding proof that liquid water once covered the red planet. In 2018, a dark global dust storm blotted out the sun. As the darkness fell, it transmitted its final diary log to Earth: 'My battery is low and it's getting dark.' It now rests quietly in Perseverance Valley, blanketed by Martian dust.",
-                sim: "📍 LOCATION SYSTEM LOCKED: Rests permanently at Perseverance Valley, Mars."
+                desc: "Designed for a structural durability target of only 90 days, Opportunity survived on Mars for nearly 15 years, discovering definitive proof that water once flowed across Mars. In 2018, a dark global dust storm choked its solar panels. Its final transmission home was heartbreakingly simple: 'My battery is low and it's getting dark.'",
+                sim: "📍 CONNECTED // PERSEVERANCE VALLEY SURFACE BEACON DATA INBOUND"
             },
             apollo: {
-                title: "Chapter 3: The Golden Footprint (Apollo 11 Stage)",
-                desc: "In July of 1969, a metallic, spider-like craft descended onto the Lunar surface. When Neil Armstrong and Buzz Aldrin launched back to Earth, they left this golden metallic descent stage behind at Tranquility Base to serve as their launchpad foundation. It remains there today, completely untouched in the silent lunar vacuum, carrying a plaque that reads: 'We came in peace for all mankind.'",
-                sim: "📍 LOCATION SYSTEM LOCKED: Static monument resting at Tranquility Base, The Moon."
+                title: "Chapter 3: The Golden Footprint (Apollo 11)",
+                desc: "The historic metallic landing platform that carried Neil Armstrong and Buzz Aldrin safely down to the Moon's surface in July of 1969. It remains behind serving as a permanent foundation outpost at Tranquility Base. Affixed to its side is a stainless-steel plaque declaring: 'We came in peace for all mankind.'",
+                sim: "🌕 CONNECTED // LUNAR TRANQUILITY BASE MATRIX OPERATIONAL"
             }
         };
+        let typeTimer;
+        function typeWriter(text, i, cb) {
+            if (i < text.length) {
+                document.getElementById('display-desc').innerHTML = text.substring(0, i+1);
+                if(i % 3 === 0) playSound(600, 'sine', 0.04);
+                typeTimer = setTimeout(function() { typeWriter(text, i+1, cb); }, 15);
+            }
+        }
         function loadAsset(key) {
+            clearTimeout(typeTimer);
+            playSound(880, 'triangle', 0.15);
+            setTimeout(() => { playSound(1200, 'sine', 0.1); }, 70);
+            
             document.getElementById('display-title').innerText = assets[key].title;
-            document.getElementById('display-desc').innerText = assets[key].desc;
             document.getElementById('simulation-screen').innerHTML = assets[key].sim;
+            
             document.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + key).classList.add('active');
+            
+            typeWriter(assets[key].desc, 0, function(){});
         }
     </script>
 </body>
