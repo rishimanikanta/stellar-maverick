@@ -3,213 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Maverick | The Silent Pioneers</title>
-    <!-- Import Google Fonts for Anton and Courier New -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <title>Stellar Maverick | Terminal</title>
     <style>
         :root {
-            --bg-space: #030712;
-            --panel-bg: rgba(17, 24, 39, 0.98);
-            --accent-blue: #38bdf8;
-            --accent-pink: #f43f5e;
-            --accent-green: #10b981;
-            --text-main: #f3f4f6;
+            --bg-space: #020617;
+            --panel-bg: rgba(15, 23, 42, 0.95);
+            --accent-blue: #00d2ff;
+            --accent-pink: #ff007f;
+            --accent-green: #00ff88;
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body {
-            font-family: 'Courier Prime', Courier, monospace;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-space);
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            background-image: radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-image: radial-gradient(white, rgba(255,255,255,.08) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
         header {
-            background: linear-gradient(180deg, #0f172a 0%, var(--bg-space) 100%);
             text-align: center;
-            padding: 35px 15px;
-            border-bottom: 2px dashed var(--accent-blue);
+            padding: 25px 15px 15px 15px;
+            background: linear-gradient(180deg, #0b132b 0%, var(--bg-space) 100%);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
         }
         h1 {
-            font-family: 'Anton', sans-serif;
-            margin: 10px 0 0 0;
-            font-size: 2.8rem;
-            color: var(--accent-blue);
-            text-shadow: 0 0 15px var(--accent-blue);
-            letter-spacing: 3px;
-            font-weight: 400;
-        }
-        .badge {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid var(--accent-blue);
-            color: var(--accent-blue);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            border-radius: 4px;
+            margin: 5px 0 0 0;
+            font-size: 1.6rem;
+            font-weight: 800;
             letter-spacing: 2px;
+            color: #ffffff;
+        }
+        h1 span { color: var(--accent-blue); }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            margin: 6px 0 0 0;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .main-frame {
             padding: 15px;
+            max-width: 500px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            gap: 15px;
         }
         .panel {
-            background-color: var(--panel-bg);
-            border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.7);
-            position: relative;
-            border-top: 4px solid var(--accent-pink);
+            background: var(--panel-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .panel::before {
-            content: '▲ NASA_ARCHIVE_ONLINE';
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 0.6rem;
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+        .panel-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+        }
+        .status-indicator {
+            font-size: 0.65rem;
             color: var(--accent-green);
             font-weight: bold;
-        }
-        h2 {
-            font-family: 'Anton', sans-serif;
-            color: var(--accent-pink);
-            font-size: 1.5rem;
-            margin-top: 0;
-            text-transform: uppercase;
-            border-bottom: 1px solid #1e293b;
-            padding-bottom: 8px;
-            letter-spacing: 1px;
-            font-weight: 400;
         }
         .node-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 15px;
         }
         .control-btn {
-            font-family: 'Anton', sans-serif;
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: var(--text-muted);
-            padding: 12px 5px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 12px 4px;
             cursor: pointer;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.72rem;
             text-transform: uppercase;
-            font-weight: 400;
+            transition: all 0.2s ease;
         }
         .control-btn.active {
             border-color: var(--accent-blue);
-            color: #fff;
-            background: rgba(56, 189, 248, 0.2);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            color: var(--accent-blue);
+            background: rgba(0, 210, 255, 0.08);
         }
         #simulation-screen {
             background: #020617;
-            border: 1px solid #1e293b;
-            min-height: 75px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            min-height: 48px;
             border-radius: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 15px;
-            font-size: 0.85rem;
+            padding: 10px 14px;
+            font-size: 0.72rem;
             color: var(--accent-green);
-            border-left: 4px solid var(--accent-green);
-            text-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+            font-family: monospace;
+            border-left: 3px solid var(--accent-green);
+            margin-bottom: 12px;
         }
         .story-box {
-            background: rgba(30, 41, 59, 0.3);
-            padding: 22px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 1px solid #1e293b;
-            line-height: 1.7;
-            border-left: 4px solid var(--accent-blue);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            min-height: 180px;
         }
         #display-title {
-            font-family: 'Anton', sans-serif;
-            color: var(--accent-blue);
-            margin-top: 0;
-            font-size: 1.5rem;
+            color: #ffffff;
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 8px;
             text-transform: uppercase;
-            text-shadow: 0 0 5px var(--accent-blue);
-            letter-spacing: 1px;
-            border-bottom: 1px dashed #1e293b;
-            padding-bottom: 6px;
-            font-weight: 400;
         }
         #display-desc {
-            color: var(--text-main);
-            font-size: 0.88rem;
+            color: #e2e8f0;
+            font-size: 0.82rem;
+            line-height: 1.6;
             margin: 0;
             white-space: pre-line;
         }
         .footer {
             text-align: center;
-            padding: 30px 15px;
+            padding: 20px;
             color: var(--text-muted);
-            font-size: 0.7rem;
-            border-top: 1px solid #1e293b;
-            letter-spacing: 1px;
+            font-size: 0.65rem;
         }
     </style>
 </head>
 <body>
     <header>
-        <span class="badge">NASA Space Apps Educational Platform</span>
-        <h1>THE SILENT PIONEERS</h1>
-        <p style="color: var(--text-muted); margin: 8px 0 0 0; font-size: 0.75rem; letter-spacing: 0.5px;">Mapping the Legacy Hardware & Breakthrough Science Across Our Solar System</p>
+        <h1>STELLAR <span>MAVERICK</span></h1>
+        <p class="subtitle">The Silent Pioneers // Interplanetary Terminal</p>
     </header>
     <div class="main-frame">
         <div class="panel">
-            <h2>🛸 Select Interstellar Asset Node</h2>
+            <div class="panel-header">
+                <span class="panel-title">Mission Matrix</span>
+                <span class="status-indicator">● ONLINE</span>
+            </div>
+            
             <div class="node-container">
                 <button class="control-btn" id="btn-ds1" onclick="loadAsset('ds1')">Deep Space 1</button>
                 <button class="control-btn" id="btn-oppy" onclick="loadAsset('oppy')">Opportunity</button>
                 <button class="control-btn" id="btn-apollo" onclick="loadAsset('apollo')">Apollo 11</button>
             </div>
-            <div id="simulation-screen">> AWAITING TRANSMISSION SIGNAL PROFILE... CHOOSE A VEHICLE MATRIX ABOVE.</div>
+            
+            <div id="simulation-screen">> DATA LINK READY. CHOOSE A HARDWARE NODE ABOVE TO CONNECT DIARY LOGS.</div>
             
             <div class="story-box">
-                <h3 id="display-title">Introduction: The Challenge Objective</h3>
-                <p id="display-desc">Since the dawn of the 1960s space race, NASA has deployed complex scientific hardware across the vast expanses of our solar system—permanently leaving landing structures, rovers, and tracking modules resting on the Moon, the surface of Mars, and deep cosmic space. 
+                <h3 id="display-title">NASA Challenge: Abandoned But Not Forgotten</h3>
+                <p id="display-desc">Since the 1960s, NASA has left hardware across the solar system—on the Moon, on Mars, and in deep space. 
 
-                While some hardware systems are completely silent monuments, others are robotic probes still actively traveling away from Earth into interstellar territory. These devices vary drastically in their design purpose, construction, and current level of functionality.
+                From rovers and instruments that completed their science missions to probes still traveling away from Earth, this hardware varies widely in both its purpose and current level of functionality.
 
-                This application serves as an interactive historical repository designed to introduce school-age space enthusiasts to these incredible engineering feats, uncovering the structural anatomy of the hardware configurations and the revolutionary scientific space discoveries they made possible.</p>
+                This interactive platform introduces school-age space enthusiasts to these incredible engineering feats, uncovering the structural anatomy of the hardware configurations and the revolutionary scientific space discoveries they made possible.</p>
             </div>
         </div>
     </div>
-    <div class="footer">OPEN SOURCE PROTOCOL // CORE ARCHIVE MATRIX REPOSITORY // STELLAR MAVERICK 2026</div>
+    <div class="footer">STELLAR MAVERICK // NASA SPACE APPS 2026</div>
     <script>
         const assets = {
             ds1: {
-                title: "Chapter 1: The Deep Space Pathfinder (Deep Space 1)",
-                desc: "■ CORE MISSION CONTEXT:\nLaunched by NASA in October 1998, Deep Space 1 (DS1) was built as an experimental tech-validation probe destined for deep heliocentric orbit.\n\n■ HARDWARE ANATOMY & INSTRUMENTS:\n- NSTAR Ion Propulsion: A revolutionary engine that utilized solar electricity to ionize xenon gas, creating a high-velocity propellant stream.\n- MICAS Camera Matrix: A miniature integrated camera and imaging spectrometer designed to analyze planetary chemicals.\n- Autonav Navigation System: Autonomous computer software that allowed the probe to navigate using starmaps without ground control help.\n\n■ SCIENCE CHRONICLES & DISCOVERIES:\n- Proved that solar-electric ion drives are highly efficient for long-duration deep space exploration.\n- Executed close flyby scans of Asteroid 9969 Braille and Comet Borrelly, gathering structural data profiles.\n- Revealed that comet nuclei are dark, dry terrains rich in complex organic molecules.\n\n■ CURRENT FUNCTIONAL STATUS:\n- Non-Functional / Still Traveling. Its engines depleted fuel in late December 2001. The hardware remains completely intact, cruising as a silent tracking probe indefinitely around the Sun.",
+                title: "Chapter 1: Deep Space 1 (Heliocentric Orbit)",
+                desc: "■ INTRODUCING THE HARDWARE:\nLaunched by NASA in 1998, Deep Space 1 (DS1) was an experimental probe designed to test advanced technologies in deep space. It featured a revolutionary NSTAR solar-electric ion engine that ionized xenon gas to move, a microscopic camera/imaging spectrometer sensor array (MICAS), and an autonomous navigation brain (Autonav) that mapped stars without help from Earth.\n\n■ SCIENCE MADE POSSIBLE:\n- Proved that highly efficient electric ion drives are viable for traveling millions of miles into deep space.\n- Executed ultra-close flybys to scan Asteroid Braille and Comet Borrelly.\n- Revealed that comet nuclei are dark, dry terrains rich in complex organic molecules.\n\n■ FUNCTIONAL LEVEL STATUS:\n- Non-Functional / Still Traveling. Its engines depleted fuel in late 2001. The hardware remains fully intact, cruising silently as an abandoned probe around our Sun forever.",
                 sim: "📡 SYSTEM RESPONSE: Deep Space 1 Node Synchronized. Tracking heliocentric travel path."
             },
             oppy: {
-                title: "Chapter 2: The Marathon Explorer (Mars Rover Opportunity)",
-desc: "■ CORE MISSION CONTEXT:\nDeployed to Mars in July 2003, the Opportunity Rover (MER-B) was built to hunt for geologic clues regarding past liquid environments on the red planet surface.\n\n■ HARDWARE ANATOMY & INSTRUMENTS:\n- Robotic Arm Matrix: Armed with a Mössbauer Spectrometer, an Alpha Particle X-Ray Spectrometer, and a Rock Abrasion Tool (RAT) to grind open interior stone grains.\n- Panoramic Camera (Pancam): High-resolution stereo imaging lenses mounted on an elevated mast.\n- Solar Array Arrays: Triple-junction solar panel sheets designed to harness sunlight into operational batteries.\n\n■ SCIENCE CHRONICLES & DISCOVERIES:\n- Discovered hematite 'blueberries,' proving that liquid, life-sustaining surface water once flowed abundantly across early Mars.\n- Concluded a historic 15-year mapping operation, breaking the record for the longest distance driven on another celestial world (28.06 miles).\n\n■ CURRENT FUNCTIONAL STATUS:\n- Inactive Monument. In June 2018, a catastrophic global Martian dust storm completely blacked out the sky, draining its batteries. It rests permanently inside Perseverance Valley, serving as a historic robotic monument.",
-sim: "📍 SYSTEM RESPONSE: Mars Rover Opportunity Log Secured. Mapping Perseverance Valley coordinates."
-},
-apollo: {
-title: "Chapter 3: Humanity's Foundation Pad (Apollo 11 Descent Stage)",
-desc: "■ CORE MISSION CONTEXT:\nLaunched in July 1969, the Apollo 11 Lunar Module (Eagle) carried the very first human boots to step onto another celestial world.\n\n■ HARDWARE ANATOMY & INSTRUMENTS:\n- Descent Propulsion System: A throttleable rocket engine designed to decelerate the lander out of orbit for a soft touchdown.\n- EASEP Science Kit: Contained a Laser Ranging Retroreflector and a Passive Seismic Experiment Package to track moonquakes.\n- Quad-Leg Landing Gear: Shock-absorbing metallic struts wrapped in gold thermal insulation foil layers.\n\n■ SCIENCE CHRONICLES & DISCOVERIES:\n- Served as the operational base camp infrastructure for the first lunar sampling gathering (47.5 pounds of moon rocks).\n- Proved that humanity can engineer protective thermal landing stations capable of supporting life in a vacuum environment.\n\n■ CURRENT FUNCTIONAL STATUS:\n- Static Historical Landmark. While the top half (Ascent Stage) launched the astronauts back home, this lower landing platform remains completely untouched at Tranquility Base, holding a plaque reading: 'We came in peace for all mankind.'",
+                title: "Chapter 2: Opportunity Rover (Mars Surface)",
+                desc: "■ INTRODUCING THE HARDWARE:\nDeployed to the Martian surface in 2003, the Opportunity Rover (MER-B) was built to track geological clues of past water. It carried high-resolution Panoramic Stereo Cameras (Pancam) on an elevated mast, a flexible robotic arm loaded with composition spectrometers, a Rock Abrasion Tool (RAT) to grind stones, and solar panel arrays to recharge its internal electronic core.\n\n■ SCIENCE MADE POSSIBLE:\n- Discovered mineral hematite 'blueberries,' proving liquid, life-sustaining water once flowed on ancient Mars.\n- Operated for 15 historic years instead of its 90-day target, driving a record-breaking 28.06 miles across another planet.\n\n■ FUNCTIONAL LEVEL STATUS:\n- Inactive Monument. In June 2018, a global Martian dust storm blacked out the sky and drained its batteries. Its legendary final log home was: 'My battery is low and it's getting dark.' It rests permanently at Perseverance Valley.",
+                sim: "📍 SYSTEM RESPONSE: Mars Rover Opportunity Log Secured. Mapping Perseverance Valley coordinates."
+            },
+            apollo: {
+                title: "Chapter 3: Apollo 11 Descent Stage (The Moon)",
+                desc: "■ INTRODUCING THE HARDWARE:\nThe historic 1969 lunar landing platform that safely carried human boots to the Moon for the first time. It was engineered with a heavy throttleable rocket propulsion engine, sturdy quad shock-absorbing landing gear struts wrapped in gold thermal foil, and the EASEP lunar science kit which contained laser retroreflectors and seismic sensors.\n\n■ SCIENCE MADE POSSIBLE:\n- Served as the critical base camp infrastructure for the first lunar sample collection (47.5 pounds of pristine moon rocks).\n- Proved that humanity can engineer protective landing structures capable of shielding scientific gear in a harsh cosmic vacuum.\n\n■ FUNCTIONAL LEVEL STATUS:\n- Static Historical Landmark. While the astronauts launched back home in the upper stage, this lower landing platform remains completely untouched at Tranquility Base, holding a permanent plaque reading: 'We came in peace for all mankind.'",
 sim: "🌕 SYSTEM RESPONSE: Apollo 11 Outpost Anchored. Scanning Tranquility Base grid profiles."
 }
 };
@@ -217,7 +200,7 @@ let typeTimer;
 function typeWriter(text, i) {
 if (i < text.length) {
 document.getElementById('display-desc').innerHTML = text.substring(0, i+1);
-typeTimer = setTimeout(function() { typeWriter(text, i+1); }, 6);
+typeTimer = setTimeout(function() { typeWriter(text, i+1); }, 4);
 }
 }
 function loadAsset(key) {
