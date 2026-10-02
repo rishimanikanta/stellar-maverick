@@ -215,3 +215,9 @@
             document.getElementById('log-impact').innerText = assets[key].impact;
             document.getElementById('simulation-screen').innerHTML = assets[key].sim;
             document.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + key).classList.add('active');
+            document.querySelectorAll('.stat-row').forEach(row => row.classList.add('updated'));
+        }
+    </script>
+</body>
+</html>
